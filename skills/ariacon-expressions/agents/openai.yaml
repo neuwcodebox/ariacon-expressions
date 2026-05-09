@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ariacon Expressions"
+  short_description: "Expressive Ariacon reaction images"
+  default_prompt: "Use $ariacon-expressions to make the response more expressive with a fitting Ariacon image."
