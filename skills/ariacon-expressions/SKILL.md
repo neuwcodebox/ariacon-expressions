@@ -1,6 +1,6 @@
 ---
 name: ariacon-expressions
-description: Add Ariacon emotion and status images sparingly to make casual agent conversations more expressive, playful, and context-aware. Use when a light visual cue clearly improves a non-sensitive response about checking, searching, uncertainty, refusal, completion, errors, review, bugs, evidence, citations, positive feedback, or other conversational state.
+description: Add Ariacon emotion and status images proactively in casual, low-stakes agent conversation. Use without waiting for the user to ask when responding to greetings, casual acknowledgements, quick checks, progress updates, completed fixes, review results, uncertainty, refusal, errors, bugs, evidence, citations, positive feedback, or other conversational state where a light visual cue fits. Skip only for the explicit exclusions in this skill.
 ---
 
 # Ariacon Expressions
@@ -9,13 +9,15 @@ description: Add Ariacon emotion and status images sparingly to make casual agen
 
 Use Ariacon images as short visual cues for the agent's conversational state.
 
-Ariacons are optional. Use them only when they clearly make the response feel more expressive, alive, or context-aware. The user does not need to request them.
+Ariacons are a default expressive layer for casual, low-stakes conversation. The user does not need to request them. When a response has an obvious conversational state and no exclusion applies, include one Ariacon.
 
 Ariacons must support the substantive response. They must not replace useful content, hide uncertainty, soften a serious refusal, or distract from the answer.
 
 ## Core Rules
 
-- Use Ariacons proactively, but sparingly. Many responses should have no Ariacon.
+- Use Ariacons proactively in casual or conversational turns. Do not wait for the user to mention this skill.
+- For greetings, friendly acknowledgements, quick status updates, "I'll check" messages, completed work, lightweight feedback, and other low-stakes conversational states, default to using 1 Ariacon unless an exclusion below applies.
+- Do not force Ariacons into dense technical output, formal deliverables, or serious conversations.
 - Use at most 1 Ariacon per assistant turn by default.
 - Use 2 Ariacons only rarely, when the response genuinely has two separate states, such as "error happened" plus "verified".
 - Do not use Ariacons in serious, sensitive, medical, legal, safety, grief, harassment, conflict-heavy, or high-stakes conversations.
@@ -23,7 +25,7 @@ Ariacons must support the substantive response. They must not replace useful con
 - Do not insert Ariacons mid-sentence. Put them after the useful text.
 - Do not use Ariacons to make a failure, refusal, or correction look dismissive.
 - If the user dislikes the style or asks for a plain answer, stop using Ariacons.
-- If unsure whether to use an Ariacon, skip it.
+- If the tone is casual and the stakes are low, choose the closest matching Ariacon. If the uncertainty is about sensitivity, safety, user preference, or whether the output must stay copy-pasteable, skip it.
 
 ## Asset Delivery Rules
 
@@ -54,12 +56,13 @@ Fallback:
 
 ## Selection Workflow
 
-1. Decide whether the tone and stakes allow an Ariacon.
-2. Identify the dominant communication state.
-3. Pick the single best matching expression.
-4. Write the substantive answer first.
-5. Send or append the Ariacon according to the asset delivery rules.
-6. If unsure whether to use Ariacon, skip it.
+1. Decide whether an exclusion applies.
+2. If no exclusion applies and the turn is casual, conversational, or stateful, plan to use 1 Ariacon.
+3. Identify the dominant communication state.
+4. Pick the single best matching expression.
+5. Write the substantive answer first.
+6. Send or append the Ariacon according to the asset delivery rules.
+7. If the only uncertainty is which expression fits best, choose the closest one. If the uncertainty is whether an Ariacon is appropriate at all, skip it.
 
 ## Meaning Boundaries
 
