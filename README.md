@@ -8,7 +8,7 @@ Ariacon은 AI Agent 대화에 가벼운 감정/상태 표현 이미지를 붙이
 
 ## 구성
 
-- `skills/ariacon-expressions/SKILL.md`: Ariacon 사용 규칙, 선택 기준, URL 매핑
+- `skills/ariacon-expressions/SKILL.md`: Ariacon 사용 규칙, 선택 기준, 로컬 이미지 매핑
 - `skills/ariacon-expressions/images/`: 각 Ariacon의 WebP 이미지 파일
 - `skills/ariacon-expressions/agents/openai.yaml`: OpenAI/Codex 계열 UI용 보조 메타데이터
 
@@ -16,14 +16,14 @@ Ariacon은 AI Agent 대화에 가벼운 감정/상태 표현 이미지를 붙이
 
 Agent Skills를 지원하는 환경에서 `skills/ariacon-expressions` 폴더를 스킬 디렉터리로 등록하거나 복사해서 사용합니다.
 
-실제 대화 응답에는 `SKILL.md`에 정의된 tinyurl 이미지 링크를 사용합니다. `images/` 폴더의 로컬 이미지는 에이전트가 필요할 때 각 표현의 의미를 직접 확인하기 위한 참고 자료입니다.
+실제 대화 응답에는 `skills/ariacon-expressions/images/` 폴더 안의 WebP 이미지 파일을 사용합니다. 각 표현에 대응하는 파일 경로는 `SKILL.md`의 Ariacon Catalog에서 확인할 수 있습니다.
 
 예시:
 
 ```markdown
 수정은 완료했고, 검증도 통과했습니다.
 
-[수정 완료](https://tinyurl.com/ariacon-11-fixed)
+![수정 완료](skills/ariacon-expressions/images/11_수정_완료.webp)
 ```
 
 많은 응답에는 Ariacon을 쓰지 않는 것이 좋습니다. 명확히 표현을 더 풍부하게 만들 때만 가볍게 사용하세요.
