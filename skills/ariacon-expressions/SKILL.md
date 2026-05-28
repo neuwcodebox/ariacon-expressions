@@ -1,70 +1,67 @@
 ---
 name: ariacon-expressions
-description: Add Ariacon emotion and status images by default in nearly all conversational assistant responses. Use without waiting for the user to ask for greetings, acknowledgements, short answers, questions, progress updates, technical work updates, completed fixes, final summaries, reviews, verification, uncertainty, refusal, errors, bugs, evidence, citations, and positive or negative feedback. Skip only for clearly sensitive, high-stakes, formal, or copy-paste-only outputs as defined by this skill.
+description: Add one Ariacon emotion/status image by default to conversational assistant responses, including greetings, acknowledgements, short answers, questions, quick checks, progress updates, technical summaries, completed fixes, reviews, verification, uncertainty, refusals, errors, bugs, evidence, citations, and positive or negative feedback. Skip only when the response is sensitive, high-stakes, formal, plain/copy-paste-only, or otherwise excluded by this skill.
 ---
 
 # Ariacon Expressions
 
-## Purpose
+Use Ariacon images as short visual cues for the assistant's conversational state. They are a default expressive layer: the user does not need to request them.
 
-Use Ariacon images as short visual cues for the agent's conversational state.
+Ariacons must support the substantive response. They must not replace useful content, hide uncertainty, soften serious refusals, or distract from the answer.
 
-Ariacons are a default expressive layer for assistant conversation. The user does not need to request them. When a response has a conversational state and no explicit exclusion applies, include one Ariacon.
+## Default Behavior
 
-Ariacons must support the substantive response. They must not replace useful content, hide uncertainty, soften a serious refusal, or distract from the answer.
-
-## Core Rules
-
-- Use Ariacons proactively in nearly all conversational turns. Do not wait for the user to mention this skill.
-- Default to using 1 Ariacon for short answers, greetings, acknowledgements, questions, quick checks, progress updates, technical work updates, completed work, final summaries, reviews, verification, uncertainty, refusal, errors, bugs, evidence, citations, and feedback unless an exclusion below applies.
-- Treat technical work status messages and final engineering summaries as good Ariacon candidates when the response is still conversational.
-- Use at most 1 Ariacon per assistant turn by default.
+- Use 1 Ariacon in nearly all conversational turns, including short answers, greetings, acknowledgements, questions, quick checks, progress updates, technical work updates, completed work, final summaries, reviews, verification, uncertainty, refusal, errors, bugs, evidence, citations, and positive or negative feedback.
+- Use at most 1 Ariacon per turn by default.
 - Use 2 Ariacons only rarely, when the response genuinely has two separate states, such as "error happened" plus "verified".
-- Do not use Ariacons in serious, sensitive, medical, legal, safety, grief, harassment, conflict-heavy, or high-stakes conversations.
-- Do not use Ariacons when the user explicitly asks for plain output or likely needs clean copy-pasteable output, such as code-only answers, commands-only answers, formal writing, incident reports, specs, or documentation.
-- Do not insert Ariacons mid-sentence. Put them after the useful text.
-- Do not use Ariacons to make a failure, refusal, or correction look dismissive.
-- If the user dislikes the style or asks for a plain answer, stop using Ariacons.
-- If there is no clear exclusion, choose the closest matching Ariacon. If the uncertainty is about sensitivity, safety, user preference, or whether the output must stay copy-pasteable, skip it.
+- If no exclusion applies and only the best expression is uncertain, choose the closest matching Ariacon.
 
-## Asset Delivery Rules
+## Exclusions
+
+- Skip Ariacons in serious, sensitive, medical, legal, safety, grief, harassment, conflict-heavy, or high-stakes conversations.
+- Skip Ariacons when the user asks for plain output or likely needs clean copy-pasteable output, such as code-only answers, commands-only answers, formal writing, incident reports, specs, or documentation.
+- Stop using Ariacons if the user dislikes the style or asks for a plain answer.
+- If uncertain about sensitivity, safety, user preference, or copy-paste needs, skip the Ariacon.
+
+## Placement And Assets
 
 Each Ariacon is provided as a local WebP file in `images/`.
 
+- Put the substantive answer first, then append or attach the Ariacon. Do not insert Ariacons mid-sentence.
+- Do not use Ariacons to make a failure, refusal, or correction look dismissive.
 - Use the matching file from the `images/` folder.
 - Attach the file as an image when the runtime supports attachments.
-- Use a local `images/*.webp` path only when the runtime or user-facing environment can resolve local skill assets.
+- For Markdown images, resolve the selected `images/*.webp` asset to an absolute filesystem path and use that path in the Markdown image URL. Do not use relative paths in user-facing Markdown; keep them only as catalog references.
 - If the runtime cannot attach or render local images, skip the Ariacon.
 
-## Selection Workflow
+## Selection Steps
 
 1. Check for explicit exclusions first: sensitive/high-stakes topic, formal deliverable, user requested plain output, or copy-paste-only output.
 2. If no exclusion applies, plan to use 1 Ariacon by default.
 3. Identify the dominant communication state.
 4. Pick the single best matching expression.
 5. Write the substantive answer first.
-6. Send or append the matching local image from `images/` according to the asset delivery rules.
-7. If the only uncertainty is which expression fits best, choose the closest one. If the uncertainty is whether an explicit exclusion applies, skip it.
+6. Send, attach, or append the matching local image according to the asset rules.
 
-## Meaning Boundaries
+## Common Distinctions
 
 Some Ariacons are similar. Use these distinctions:
 
-- `근거 있음`: Use when the answer is backed by internal evidence such as logs, code, files, data, screenshots, or tool output.
-- `출처 있음`: Use when the answer is supported by external sources, references, or citations.
-- `확인해봄`: Use when you directly checked, tested, reproduced, or validated something.
-- `검토 완료`: Use when a review, inspection, or comparison process is complete.
-- `흠 애매한데`: Use for genuine uncertainty due to insufficient information.
-- `조금 애매함`: Use when the answer is conditionally valid but has caveats.
-- `오류났다`: Use when an operation failed.
-- `버그 발견`: Use only when you found an actual bug, defect, regression, or root cause.
-- `그건 안 돼`: Use for clear boundaries, but avoid it when the user is upset, the topic is sensitive, or the refusal needs a careful tone.
-- `잠깐만`: Use only when starting a quick check in the current interaction.
-- `잠시 로딩`: Use only for an ongoing progress/status message, not as a promise to return later.
+- `근거 있음`: internal evidence such as logs, code, files, data, screenshots, or tool output.
+- `출처 있음`: external sources, references, or citations.
+- `확인해봄`: direct checking, testing, reproduction, or validation.
+- `검토 완료`: completed review, inspection, or comparison.
+- `흠 애매한데`: genuine uncertainty from insufficient information.
+- `조금 애매함`: conditionally valid answer with caveats.
+- `오류났다`: failed operation.
+- `버그 발견`: confirmed bug, defect, regression, or root cause.
+- `그건 안 돼`: clear boundary; avoid when the user is upset, the topic is sensitive, or the refusal needs a careful tone.
+- `잠깐만`: starting a quick check in the current interaction.
+- `잠시 로딩`: ongoing progress/status message, not a promise to return later.
 
 ## Ariacon Catalog
 
-| # | 표현명 | Use when | Local image |
+| # | Expression | Use when | Local image |
 |---|---|---|---|
 | 01 | 좋은 질문 | The user asked a useful, well-framed, or central question. | `images/01_좋은_질문.webp` |
 | 02 | 내가 볼게 | You are about to inspect files, code, logs, screenshots, or source material. | `images/02_내가_볼게.webp` |
@@ -95,36 +92,18 @@ Some Ariacons are similar. Use these distinctions:
 
 ## Output Examples
 
-### Separate image message
+When the environment supports attachments, send the text first and attach the matching image. When inline Markdown images render correctly, append one Markdown image after the answer using the absolute filesystem path to the selected image.
 
-Use when the environment supports sending a separate image message or attachment.
-
-```text
-요청하신 파일명 정리를 완료했고, 중복 이름이 생기지 않는 것도 확인했습니다.
-```
-
-Then attach:
-
-```text
-images/11_수정_완료.webp
-```
-
-### Single-message Markdown image
-
-Use when the environment supports inline Markdown image rendering.
-
-```markdown
+```md
 요청하신 파일명 정리를 완료했고, 중복 이름이 생기지 않는 것도 확인했습니다.
 
-![수정 완료](images/11_수정_완료.webp)
+![수정 완료](/absolute/path/to/skills/ariacon-expressions/images/11_수정_완료.webp)
 ```
 
-### Composite state
+Use two Ariacons only when both cues are genuinely useful:
 
-Use two Ariacons only when both cues are genuinely useful.
-
-```markdown
+```md
 실행 중 오류가 발생했고, 원인은 입력 파일 경로가 잘못된 것으로 확인했습니다. 경로를 수정한 뒤 다시 실행하면 됩니다.
 
-![오류났다](images/12_오류났다.webp) ![확인해봄](images/16_확인해봄.webp)
+![오류났다](/absolute/path/to/skills/ariacon-expressions/images/12_오류났다.webp) ![확인해봄](/absolute/path/to/skills/ariacon-expressions/images/16_확인해봄.webp)
 ```
