@@ -1,6 +1,6 @@
 # Ariacon
 
-Ariacon은 AI Agent 대화에 가벼운 감정/상태 표현 이미지를 붙이기 위한 Agent Skill 패키지입니다. 에이전트가 답변의 진행 상태, 판단, 완료, 오류, 검토 결과 등을 더 풍부하게 표현하고 싶을 때 Ariacon 이미지를 선택해 사용할 수 있도록 `SKILL.md`와 로컬 참고 이미지를 함께 제공합니다.
+Ariacon은 AI Agent 대화에 가벼운 감정/상태 표현 이미지를 기본으로 붙이기 위한 Agent Skill 패키지입니다. 에이전트가 진행 상태, 판단, 완료, 오류, 검토 결과 등을 표현할 때 명확한 제외 사유가 없으면 Ariacon 이미지를 적극적으로 선택해 사용할 수 있도록 `SKILL.md`와 로컬 참고 이미지를 함께 제공합니다.
 
 ![Ariacon 데모](docs/demo1.png)
 
@@ -26,4 +26,4 @@ Agent Skills를 지원하는 환경에서 `skills/ariacon-expressions` 폴더를
 ![수정 완료](skills/ariacon-expressions/images/11_수정_완료.webp)
 ```
 
-많은 응답에는 Ariacon을 쓰지 않는 것이 좋습니다. 명확히 표현을 더 풍부하게 만들 때만 가볍게 사용하세요.
+민감하거나 고위험인 주제, 공식 산출물, 그대로 복사해야 하는 코드/명령/문서 출력이 아니라면 Ariacon을 기본적으로 사용하세요.

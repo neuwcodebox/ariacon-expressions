@@ -1,4 +1,7 @@
 interface:
   display_name: "Ariacon Expressions"
-  short_description: "Expressive Ariacon reaction images"
-  default_prompt: "Use $ariacon-expressions to make the response more expressive with a fitting Ariacon image."
+  short_description: "Default Ariacon reaction images"
+  default_prompt: "Use $ariacon-expressions to add a fitting Ariacon image by default unless the response should stay plain."
+
+policy:
+  allow_implicit_invocation: true
